@@ -1,0 +1,8 @@
+## OS
+.DS_Store
+
+## User settings
+xcuserdata/
+
+## Gcc Patch
+/*.gcno
