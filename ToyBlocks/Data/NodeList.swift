@@ -35,7 +35,7 @@ class NodeList: ObservableObject {
                 if data != nil {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                        node.name = String(describing: json["node_name"])
+                        node.name = String(describing: json["node_name"]!)
                         node.online = true
                     } catch {
                         print(error)
