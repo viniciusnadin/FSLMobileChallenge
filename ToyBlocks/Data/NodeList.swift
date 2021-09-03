@@ -38,6 +38,7 @@ class NodeList: ObservableObject {
                         node.name = String(describing: json["node_name"]!)
                         node.online = true
                     } catch {
+                        node.online = false
                         print(error)
                     }
                 }
