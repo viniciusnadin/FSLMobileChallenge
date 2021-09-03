@@ -15,13 +15,13 @@ class NodeList: ObservableObject {
         Node("Node 4", "http://localhost:3002")
     ]
     
-    public func refresh() -> Void {
+    public func fetchStatuses() -> Void {
         for node in self.nodes {
-            self.refreshNode(node)
+            self.fetchNodeStatus(node)
         }
     }
     
-    private func refreshNode(_ node: Node) -> Void {
+    private func fetchNodeStatus(_ node: Node) -> Void {
         var request = URLRequest(url: URL(string: "\(node.url)/api/v1/status")!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

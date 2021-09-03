@@ -27,7 +27,7 @@ struct ContentView: View {
         }
         .preferredColorScheme(.light)
         .onAppear {
-            self.nodeList.refresh()
+            self.nodeList.fetchStatuses()
         }
     }
 }
