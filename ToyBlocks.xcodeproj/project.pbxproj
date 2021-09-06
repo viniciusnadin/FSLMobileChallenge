@@ -17,8 +17,10 @@
 		A038EDC426E130F0001C3B96 /* NodeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038EDC326E130F0001C3B96 /* NodeCardView.swift */; };
 		A042578926E13F5200CC1F80 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A042578826E13F5200CC1F80 /* Node.swift */; };
 		A042578C26E164EF00CC1F80 /* NodeCardStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A042578B26E164EF00CC1F80 /* NodeCardStatusView.swift */; };
+		A042E66726E28E1600519780 /* NodeListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A042E66626E28E1600519780 /* NodeListTest.swift */; };
 		A086510526E117FC00040169 /* ScreenTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086510426E117FC00040169 /* ScreenTitleView.swift */; };
 		A086510726E1246B00040169 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086510626E1246B00040169 /* AppSettings.swift */; };
+		A08E49BB26E2A5D000B88507 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08E49BA26E2A5D000B88507 /* ApiProvider.swift */; };
 		A09D5C7B26E1114700203ACA /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D5C7A26E1114700203ACA /* LoaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,8 +58,10 @@
 		A038EDC326E130F0001C3B96 /* NodeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCardView.swift; sourceTree = "<group>"; };
 		A042578826E13F5200CC1F80 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		A042578B26E164EF00CC1F80 /* NodeCardStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCardStatusView.swift; sourceTree = "<group>"; };
+		A042E66626E28E1600519780 /* NodeListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeListTest.swift; sourceTree = "<group>"; };
 		A086510426E117FC00040169 /* ScreenTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTitleView.swift; sourceTree = "<group>"; };
 		A086510626E1246B00040169 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		A08E49BA26E2A5D000B88507 /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
 		A09D5C7A26E1114700203ACA /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +138,7 @@
 			children = (
 				A01A4C7A26DFD2A000AD420F /* ToyBlocksTests.swift */,
 				A01A4C7C26DFD2A000AD420F /* Info.plist */,
+				A042E66626E28E1600519780 /* NodeListTest.swift */,
 			);
 			path = ToyBlocksTests;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			children = (
 				A038EDBF26E12C65001C3B96 /* NodeList.swift */,
 				A042578826E13F5200CC1F80 /* Node.swift */,
+				A08E49BA26E2A5D000B88507 /* ApiProvider.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 				A086510726E1246B00040169 /* AppSettings.swift in Sources */,
 				A038EDC426E130F0001C3B96 /* NodeCardView.swift in Sources */,
 				A09D5C7B26E1114700203ACA /* LoaderView.swift in Sources */,
+				A08E49BB26E2A5D000B88507 /* ApiProvider.swift in Sources */,
 				A038EDC026E12C65001C3B96 /* NodeList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A01A4C7B26DFD2A000AD420F /* ToyBlocksTests.swift in Sources */,
+				A042E66726E28E1600519780 /* NodeListTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,7 +516,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 237K35W5JU;
 				INFOPLIST_FILE = ToyBlocksTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -530,7 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 237K35W5JU;
 				INFOPLIST_FILE = ToyBlocksTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

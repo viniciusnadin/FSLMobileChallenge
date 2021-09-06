@@ -8,6 +8,8 @@
 import SwiftUI
 
 class NodeList: ObservableObject {
+    private var apiProvider: ApiProvider!
+    
     @Published var nodes: [Node] = [
         Node("Node 1", "https://thawing-springs-53971.herokuapp.com"),
         Node("Node 2", "https://secret-lowlands-62331.herokuapp.com"),
@@ -15,36 +17,37 @@ class NodeList: ObservableObject {
         Node("Node 4", "http://localhost:3002")
     ]
     
+    convenience init() {
+        self.init(apiProvider: ApiProvider())
+    }
+
+    init(apiProvider: ApiProvider) {
+        self.apiProvider = apiProvider
+    }
+
     public func fetchStatuses() -> Void {
         for node in self.nodes {
-            self.fetchNodeStatus(node)
+            let url: String = "\(node.url)/api/v1/status"
+            self.fetchNodeStatus(url: url, node: node)
         }
     }
-    
-    private func fetchNodeStatus(_ node: Node) -> Void {
-        var request = URLRequest(url: URL(string: "\(node.url)/api/v1/status")!)
-        request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+
+    private func fetchNodeStatus(url: String, node: Node) -> Void {
+        let url: String = "\(node.url)/api/v1/status"
+
+        self.apiProvider.get(url: url, onComplete: { json, error in
             DispatchQueue.main.async {
                 node.loading = false
 
-                if data != nil {
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                        node.name = String(describing: json["node_name"]!)
-                        node.online = true
-                    } catch {
-                        node.online = false
-                        print(error)
-                    }
+                if json != nil {
+                    node.name = String(describing: json!["node_name"]!)
+                    node.online = true
+                }
+                else {
+                    node.online = false
+                    print(error!)
                 }
             }
         })
-        
-        task.resume()
     }
 }
