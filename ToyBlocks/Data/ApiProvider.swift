@@ -8,7 +8,7 @@
 import Foundation
 
 class ApiProvider {
-    public func get(url: String, onComplete: @escaping (Dictionary<String, AnyObject>?, ApiProviderError?) -> Void) -> Void {
+    public func get(url: String, completionHandler: @escaping (Dictionary<String, AnyObject>?, ApiProviderError?) -> Void) -> Void {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -17,13 +17,13 @@ class ApiProvider {
             if data != nil {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                    onComplete(json, nil)
+                    completionHandler(json, nil)
                 } catch {
-                    onComplete(nil, ApiProviderError.deserializationError)
+                    completionHandler(nil, ApiProviderError.deserializationError)
                 }
             }
             else {
-                onComplete(nil, ApiProviderError.serverUnreachable)
+                completionHandler(nil, ApiProviderError.serverUnreachable)
             }
         })
 

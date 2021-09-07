@@ -35,7 +35,7 @@ class NodeList: ObservableObject {
     private func fetchNodeStatus(url: String, node: Node) -> Void {
         let url: String = "\(node.url)/api/v1/status"
 
-        self.apiProvider.get(url: url, onComplete: { json, error in
+        self.apiProvider.get(url: url, completionHandler: { json, error in
             DispatchQueue.main.async {
                 node.loading = false
 
