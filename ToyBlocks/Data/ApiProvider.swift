@@ -8,12 +8,18 @@
 import Foundation
 
 class ApiProvider {
+    private var session: URLSession
+
+    init(using session: URLSession = URLSession.shared) {
+        self.session = session
+    }
+
     public func get(url: String, completionHandler: @escaping (Dictionary<String, AnyObject>?, ApiProviderError?) -> Void) -> Void {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error -> Void in
+        let task = self.session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             if data != nil {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>

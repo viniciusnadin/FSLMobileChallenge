@@ -25,14 +25,24 @@ class NodeList: ObservableObject {
         self.apiProvider = apiProvider
     }
 
-    public func fetchStatuses() -> Void {
+    public func fetchStatuses(completionHandler: @escaping () -> Void = { }) -> Void {
+        let taskGroup = DispatchGroup()
+        
         for node in self.nodes {
             let url: String = "\(node.url)/api/v1/status"
-            self.fetchNodeStatus(url: url, node: node)
+
+            taskGroup.enter()
+            self.fetchNodeStatus(url: url, node: node, completionHandler: {
+                taskGroup.leave()
+            })
+        }
+        
+        taskGroup.notify(queue: .main) {
+            completionHandler()
         }
     }
 
-    private func fetchNodeStatus(url: String, node: Node) -> Void {
+    private func fetchNodeStatus(url: String, node: Node, completionHandler: @escaping () -> Void) -> Void {
         let url: String = "\(node.url)/api/v1/status"
 
         self.apiProvider.get(url: url, completionHandler: { json, error in
@@ -47,6 +57,8 @@ class NodeList: ObservableObject {
                     node.online = false
                     print(error!)
                 }
+                
+                completionHandler()
             }
         })
     }
