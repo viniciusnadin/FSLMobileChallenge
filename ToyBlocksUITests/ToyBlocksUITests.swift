@@ -2,7 +2,7 @@
 //  ToyBlocksUITests.swift
 //  ToyBlocksUITests
 //
-//  Created by Moacir Braga on 01/09/21.
+//  Created by FullStack Labs on 01/09/21.
 //
 
 import XCTest
@@ -22,13 +22,16 @@ class ToyBlocksUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testNodeToogle() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        XCTAssertTrue(app.scrollViews["NodesScrollView"].exists)
+        XCTAssertTrue(app.scrollViews["NodesScrollView"].otherElements.staticTexts["Node 4"].waitForExistence(timeout: 2))
+        app.scrollViews["NodesScrollView"].otherElements.staticTexts["Node 4"].firstMatch.tap()
+        XCTAssertTrue(app.scrollViews["NodesScrollView"].otherElements.staticTexts["Blocks go here"].exists)
+        app.scrollViews["NodesScrollView"].otherElements.staticTexts["Node 4"].firstMatch.tap()
+        XCTAssertFalse(app.scrollViews["NodesScrollView"].otherElements.staticTexts["Blocks go here"].exists)
     }
 
     func testLaunchPerformance() throws {

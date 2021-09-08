@@ -31,7 +31,9 @@ struct NodeCardView: View {
                         NodeCardStatusView(isOnline: $node.online)
                     }
                 }
-                Text(self.node.url).font(.caption).foregroundColor(Color("PrimaryTextColor")).opacity(0.54)
+
+                Text(self.node.url)
+                    .font(.caption).foregroundColor(Color("PrimaryTextColor")).opacity(0.54)
                 
                 if isExpanded {
                     Group {
@@ -48,6 +50,7 @@ struct NodeCardView: View {
     }
 }
 
+#if !TESTING
 struct NodeCardView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
@@ -56,3 +59,4 @@ struct NodeCardView_Previews: PreviewProvider {
         }
     }
 }
+#endif

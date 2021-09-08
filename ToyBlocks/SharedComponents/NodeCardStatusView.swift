@@ -27,6 +27,7 @@ struct NodeCardStatusView: View {
     }
 }
 
+#if !TESTING
 struct NodeCardStatusView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
@@ -35,3 +36,4 @@ struct NodeCardStatusView_Previews: PreviewProvider {
         }.previewLayout(.sizeThatFits)
     }
 }
+#endif

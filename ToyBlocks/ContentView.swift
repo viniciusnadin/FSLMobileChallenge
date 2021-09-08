@@ -21,20 +21,22 @@ struct ContentView: View {
                     ForEach(nodeList.nodes) { node in
                         NodeCardView(node)
                     }
-                }
+                }.accessibilityIdentifier("NodesScrollView")
                 Spacer()
             }.padding(.horizontal, settings.horizontalPadding)
         }
         .preferredColorScheme(.light)
         .onAppear {
-            self.nodeList.refresh()
+            self.nodeList.fetchStatuses()
         }
     }
 }
 
+#if !TESTING
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .preferredColorScheme(.dark)
     }
 }
+#endif
