@@ -21,7 +21,7 @@ struct ContentView: View {
                     ForEach(nodeList.nodes) { node in
                         NodeCardView(node)
                     }
-                }
+                }.accessibilityIdentifier("NodesScrollView")
                 Spacer()
             }.padding(.horizontal, settings.horizontalPadding)
         }

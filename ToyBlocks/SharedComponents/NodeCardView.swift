@@ -31,7 +31,9 @@ struct NodeCardView: View {
                         NodeCardStatusView(isOnline: $node.online)
                     }
                 }
-                Text(self.node.url).font(.caption).foregroundColor(Color("PrimaryTextColor")).opacity(0.54)
+
+                Text(self.node.url)
+                    .font(.caption).foregroundColor(Color("PrimaryTextColor")).opacity(0.54)
                 
                 if isExpanded {
                     Group {
