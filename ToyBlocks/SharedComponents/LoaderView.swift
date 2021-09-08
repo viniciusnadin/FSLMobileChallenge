@@ -24,8 +24,10 @@ struct LoaderView: View {
     }
 }
 
+#if !TESTING
 struct LoaderView_Previews: PreviewProvider {
     static var previews: some View {
         LoaderView()
     }
 }
+#endif

@@ -48,6 +48,7 @@ struct NodeCardView: View {
     }
 }
 
+#if !TESTING
 struct NodeCardView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
@@ -56,3 +57,4 @@ struct NodeCardView_Previews: PreviewProvider {
         }
     }
 }
+#endif
