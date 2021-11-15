@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. `git clone repo`
+1. `git clone repo` **Do not fork or push this to a public repository**
 2. `cd toy-blocks-client-ios`
 
 ## Introduction
