@@ -62,6 +62,10 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 1 {
+            return 12
+        }
+        
         return indexPath.section == expandedNode
             ? 120
             : 72
@@ -72,13 +76,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NodeTableViewCell.identifier, for: indexPath) as! NodeTableViewCell
-        cell.configure(node: dataSource[indexPath.section] as Node, isExpanded: indexPath.section == expandedNode)
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NodeTableViewCell.identifier, for: indexPath) as! NodeTableViewCell
+            cell.configure(node: dataSource[indexPath.section] as Node, isExpanded: indexPath.section == expandedNode)
+            return cell
+        }
+        
+        let cell = UITableViewCell()
+        cell.backgroundColor = UIColor.background()
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
