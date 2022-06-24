@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct ToyBlocksApp: App {
-    @EnvironmentObject var settings: AppSettings
+    @EnvironmentObject var settings: AppSettings 
     
     var body: some Scene {
         WindowGroup {
