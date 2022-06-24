@@ -22,12 +22,19 @@ class toy_blocks_client_ios_uikitUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testNodeToogle() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let tableIdentifier = "NodesTableView"
+        
+        XCTAssertTrue(app.tables[tableIdentifier].exists)
+        XCTAssertTrue(app.staticTexts["Node 4"].exists)
+        XCTAssertFalse(app.staticTexts["Blocks go Here"].exists)
+        app.tables[tableIdentifier].cells.element(boundBy: 3).tap()
+        XCTAssertTrue(app.staticTexts["Blocks go Here"].exists)
+        app.tables[tableIdentifier].cells.element(boundBy: 3).tap()
+        XCTAssertFalse(app.staticTexts["Blocks go Here"].exists)
     }
 
     func testLaunchPerformance() throws {
