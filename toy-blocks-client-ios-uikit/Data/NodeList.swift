@@ -11,9 +11,9 @@ class NodeList: ObservableObject {
     private var apiProvider: ApiProvider!
     
     @Published var nodes: [Node] = [
-        Node("Node 1", "https://thawing-springs-53971.herokuapp.com"),
-        Node("Node 2", "https://secret-lowlands-62331.herokuapp.com"),
-        Node("Node 3", "https://calm-anchorage-82141.herokuapp.com"),
+        Node("Node 1", "https://fsl-assessment-toy-blocks-node-01.s3.amazonaws.com"),
+        Node("Node 2", "https://fsl-assessment-toy-blocks-node-02.s3.amazonaws.com"),
+        Node("Node 3", "https://fsl-assessment-toy-blocks-node-03.s3.amazonaws.com"),
         Node("Node 4", "http://localhost:3002")
     ]
     
