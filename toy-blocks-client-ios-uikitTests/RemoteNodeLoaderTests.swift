@@ -55,22 +55,11 @@ final class RemoteNodeLoaderTests: XCTestCase {
     
     func test_loadNodeBlock_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
-        let url = anyURL
         let error = NSError(domain: "Error", code: 0)
         
-        let exp = expectation(description: "Wait for loadNodeBlock completion")
-        sut.loadNodeBlock(from: url) { response in
-            switch response {
-            case .success:
-                XCTFail("Expected failure result, got success instead")
-            case let .failure(receivedError):
-                XCTAssertEqual(receivedError as NSError, error)
-            }
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(error)) {
+            client.complete(withError: error)
         }
-        
-        client.complete(withError: error)
-        wait(for: [exp], timeout: 1.0)
     }
     
     // MARK: - Helpers
@@ -78,6 +67,23 @@ final class RemoteNodeLoaderTests: XCTestCase {
         let client = HTTPClientSpy()
         let sut = RemoteNodeLoader(client: client)
         return (sut, client)
+    }
+    
+    private func expect(_ sut: RemoteNodeLoader, toCompleteWith expectedResult: RemoteNodeLoader.Result, when action: () -> Void) {
+        let exp = expectation(description: "Wait for loadNodeBlock completion")
+        
+        sut.loadNodeBlock(from: anyURL) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.failure(receivedError), .failure(expectedError)):
+                XCTAssertEqual(receivedError as NSError, expectedError as NSError)
+            default:
+                XCTFail("Expected failure got success instead.")
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
     }
     
     private var anyURL: URL = {
