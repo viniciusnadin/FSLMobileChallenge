@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5475526D29BD339800F8E173 /* RemoteNodeLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475526C29BD339800F8E173 /* RemoteNodeLoaderTests.swift */; };
 		AFC642372863573000C6D20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC642362863573000C6D20A /* AppDelegate.swift */; };
 		AFC642392863573000C6D20A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC642382863573000C6D20A /* SceneDelegate.swift */; };
 		AFC6423B2863573000C6D20A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC6423A2863573000C6D20A /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5475526C29BD339800F8E173 /* RemoteNodeLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeLoaderTests.swift; sourceTree = "<group>"; };
 		AFC642332863573000C6D20A /* toy-blocks-client-ios-uikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "toy-blocks-client-ios-uikit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC642362863573000C6D20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC642382863573000C6D20A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				AFC6424D2863573300C6D20A /* toy_blocks_client_ios_uikitTests.swift */,
 				AFC6428D2865E79C00C6D20A /* NodeListTest.swift */,
 				AFC642912865E85100C6D20A /* URLProtocolMock.swift */,
+				5475526C29BD339800F8E173 /* RemoteNodeLoaderTests.swift */,
 			);
 			path = "toy-blocks-client-ios-uikitTests";
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			files = (
 				AFC6424E2863573300C6D20A /* toy_blocks_client_ios_uikitTests.swift in Sources */,
 				AFC642922865E85100C6D20A /* URLProtocolMock.swift in Sources */,
+				5475526D29BD339800F8E173 /* RemoteNodeLoaderTests.swift in Sources */,
 				AFC6428E2865E79C00C6D20A /* NodeListTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
