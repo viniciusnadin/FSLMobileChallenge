@@ -28,7 +28,7 @@ final class RemoteNodeLoaderTests: XCTestCase {
     func test_init_doesNotMakeAPIRequest() {
         let (_, client) = makeSUT()
         
-        XCTAssertNil(client.receivedURL)
+        XCTAssertTrue(client.receivedURLs.isEmpty)
     }
     
     func test_loadNodeBlock_requestsDataFromURL() {
@@ -37,7 +37,17 @@ final class RemoteNodeLoaderTests: XCTestCase {
         
         sut.loadNodeBlock(from: url)
         
-        XCTAssertEqual(client.receivedURL, url)
+        XCTAssertEqual(client.receivedURLs, [url])
+    }
+    
+    func test_loadNodeBlock_requestsDataFromURLTwice() {
+        let (sut, client) = makeSUT()
+        let url = URL(string: "http://any-url.com")!
+        
+        sut.loadNodeBlock(from: url)
+        sut.loadNodeBlock(from: url)
+        
+        XCTAssertEqual(client.receivedURLs, [url, url])
     }
     
     // MARK: - Helpers
@@ -48,10 +58,10 @@ final class RemoteNodeLoaderTests: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
-        var receivedURL: URL?
+        var receivedURLs: [URL] = [URL]()
         
         func get(from url: URL) {
-            receivedURL = url
+            receivedURLs.append(url)
         }
     }
 }
