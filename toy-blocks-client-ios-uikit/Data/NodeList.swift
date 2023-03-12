@@ -55,7 +55,6 @@ class NodeList: ObservableObject {
                 }
                 else {
                     node.online = false
-                    print(error!)
                 }
                 
                 completionHandler()

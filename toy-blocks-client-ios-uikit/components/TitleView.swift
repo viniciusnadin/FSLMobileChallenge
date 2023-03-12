@@ -7,20 +7,13 @@
 
 import UIKit
 
-class TitleView: UIView {
-    private let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = "Nodes"
-        titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont(name: "Roboto-Bold", size: 34)
-        titleLabel.font = titleLabel.font.withSize(34)
-        return titleLabel
-    }()
+class TitleView: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        titleLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 30)
-        self.addSubview(titleLabel)
+        text = "Nodes"
+        textColor = UIColor.black
+        font = UIFont(name: "Roboto-Bold", size: 34)
     }
     
     required init?(coder: NSCoder) {

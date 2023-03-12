@@ -7,13 +7,13 @@
 
 import Foundation
 
-class Node: Identifiable, ObservableObject {
-    let id = UUID()
+class Node: Identifiable {
     
-    @Published public var loading: Bool
-    @Published public var name: String
-    @Published public var online: Bool
-    @Published public var url: String
+    let id = UUID()
+    var loading: Bool
+    var name: String
+    var online: Bool
+    var url: String
     var blocks: [NodeBlock] = [NodeBlock]()
     
     init(_ name: String, _ url: String) {
@@ -22,9 +22,4 @@ class Node: Identifiable, ObservableObject {
         self.online = false
         self.url = url
     }
-}
-
-public struct NodeBlock: Equatable {
-    let index: Int
-    let content: String
 }

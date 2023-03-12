@@ -22,7 +22,8 @@ final class RemoteNodeLoaderTests: XCTestCase {
         
         sut.loadNodeBlock(from: url) { _ in }
         
-        XCTAssertEqual(client.requestedURLs, [url])
+        let urlWithComponent = url.appendingPathComponent("/api/v1/blocks", conformingTo: .url)
+        XCTAssertEqual(client.requestedURLs, [urlWithComponent])
     }
     
     func test_loadNodeBlock_requestsDataFromURLTwice() {
@@ -32,7 +33,8 @@ final class RemoteNodeLoaderTests: XCTestCase {
         sut.loadNodeBlock(from: url) { _ in }
         sut.loadNodeBlock(from: url) { _ in }
         
-        XCTAssertEqual(client.requestedURLs, [url, url])
+        let urlWithComponent = url.appendingPathComponent("/api/v1/blocks", conformingTo: .url)
+        XCTAssertEqual(client.requestedURLs, [urlWithComponent, urlWithComponent])
     }
     
     func test_loadNodeBlock_deliversErrorOnClientError() {

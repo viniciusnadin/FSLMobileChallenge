@@ -50,6 +50,16 @@
                ReferencedContainer = "container:toy-blocks-client-ios-uikit.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AFC642522863573300C6D20A"
+               BuildableName = "toy-blocks-client-ios-uikitUITests.xctest"
+               BlueprintName = "toy-blocks-client-ios-uikitUITests"
+               ReferencedContainer = "container:toy-blocks-client-ios-uikit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

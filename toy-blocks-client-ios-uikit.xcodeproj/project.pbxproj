@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		5475526D29BD339800F8E173 /* RemoteNodeLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475526C29BD339800F8E173 /* RemoteNodeLoaderTests.swift */; };
 		5475526F29BD764500F8E173 /* RemoteNodeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475526E29BD764500F8E173 /* RemoteNodeLoader.swift */; };
+		5475527129BE8B0D00F8E173 /* NodeCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475527029BE8B0D00F8E173 /* NodeCellController.swift */; };
+		5475527329BE8B3000F8E173 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475527229BE8B3000F8E173 /* APIClient.swift */; };
+		5475527529BE8DD500F8E173 /* NodeBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475527429BE8DD500F8E173 /* NodeBlockView.swift */; };
+		5475527729BE8DFF00F8E173 /* UIView+CornerAndShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475527629BE8DFF00F8E173 /* UIView+CornerAndShadowExtension.swift */; };
+		5475527929BE933E00F8E173 /* NodeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475527829BE933E00F8E173 /* NodeBlock.swift */; };
 		AFC642372863573000C6D20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC642362863573000C6D20A /* AppDelegate.swift */; };
 		AFC642392863573000C6D20A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC642382863573000C6D20A /* SceneDelegate.swift */; };
 		AFC6423B2863573000C6D20A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC6423A2863573000C6D20A /* ViewController.swift */; };
@@ -52,6 +57,11 @@
 /* Begin PBXFileReference section */
 		5475526C29BD339800F8E173 /* RemoteNodeLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeLoaderTests.swift; sourceTree = "<group>"; };
 		5475526E29BD764500F8E173 /* RemoteNodeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeLoader.swift; sourceTree = "<group>"; };
+		5475527029BE8B0D00F8E173 /* NodeCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCellController.swift; sourceTree = "<group>"; };
+		5475527229BE8B3000F8E173 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		5475527429BE8DD500F8E173 /* NodeBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeBlockView.swift; sourceTree = "<group>"; };
+		5475527629BE8DFF00F8E173 /* UIView+CornerAndShadowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CornerAndShadowExtension.swift"; sourceTree = "<group>"; };
+		5475527829BE933E00F8E173 /* NodeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeBlock.swift; sourceTree = "<group>"; };
 		AFC642332863573000C6D20A /* toy-blocks-client-ios-uikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "toy-blocks-client-ios-uikit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC642362863573000C6D20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC642382863573000C6D20A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,7 +148,6 @@
 				AFC6423F2863573200C6D20A /* Assets.xcassets */,
 				AFC642412863573200C6D20A /* LaunchScreen.storyboard */,
 				AFC642442863573200C6D20A /* Info.plist */,
-				5475526E29BD764500F8E173 /* RemoteNodeLoader.swift */,
 			);
 			path = "toy-blocks-client-ios-uikit";
 			sourceTree = "<group>";
@@ -168,6 +177,9 @@
 			children = (
 				AFC642692863677C00C6D20A /* NodeTableViewCell.swift */,
 				AFC642792864F9D600C6D20A /* TitleView.swift */,
+				5475527029BE8B0D00F8E173 /* NodeCellController.swift */,
+				5475527429BE8DD500F8E173 /* NodeBlockView.swift */,
+				5475527629BE8DFF00F8E173 /* UIView+CornerAndShadowExtension.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -175,10 +187,13 @@
 		AFC6426B2863733300C6D20A /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5475526E29BD764500F8E173 /* RemoteNodeLoader.swift */,
 				AFC6426C2863734100C6D20A /* Node.swift */,
 				AFC6426E2863737C00C6D20A /* NodeList.swift */,
 				AFC642702863739E00C6D20A /* ApiProvider.swift */,
 				AFC6428F2865E82C00C6D20A /* URLSessionProtocol.swift */,
+				5475527229BE8B3000F8E173 /* APIClient.swift */,
+				5475527829BE933E00F8E173 /* NodeBlock.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -338,11 +353,16 @@
 				AFC6423B2863573000C6D20A /* ViewController.swift in Sources */,
 				AFC642782864F6AF00C6D20A /* Colors.swift in Sources */,
 				AFC6427A2864F9D600C6D20A /* TitleView.swift in Sources */,
+				5475527729BE8DFF00F8E173 /* UIView+CornerAndShadowExtension.swift in Sources */,
 				5475526F29BD764500F8E173 /* RemoteNodeLoader.swift in Sources */,
 				AFC6426D2863734100C6D20A /* Node.swift in Sources */,
+				5475527129BE8B0D00F8E173 /* NodeCellController.swift in Sources */,
+				5475527529BE8DD500F8E173 /* NodeBlockView.swift in Sources */,
 				AFC642372863573000C6D20A /* AppDelegate.swift in Sources */,
 				AFC642902865E82C00C6D20A /* URLSessionProtocol.swift in Sources */,
 				AFC642392863573000C6D20A /* SceneDelegate.swift in Sources */,
+				5475527929BE933E00F8E173 /* NodeBlock.swift in Sources */,
+				5475527329BE8B3000F8E173 /* APIClient.swift in Sources */,
 				AFC6426A2863677C00C6D20A /* NodeTableViewCell.swift in Sources */,
 				AFC642712863739E00C6D20A /* ApiProvider.swift in Sources */,
 				AFC6426F2863737C00C6D20A /* NodeList.swift in Sources */,

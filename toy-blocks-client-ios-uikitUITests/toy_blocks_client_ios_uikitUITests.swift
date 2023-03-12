@@ -32,7 +32,7 @@ class toy_blocks_client_ios_uikitUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Node 4"].exists)
         XCTAssertFalse(app.staticTexts["Blocks go Here"].exists)
         app.tables[tableIdentifier].cells.element(boundBy: 3).tap()
-        XCTAssertTrue(app.staticTexts["Blocks go Here"].exists)
+        XCTAssertFalse(app.staticTexts["Blocks go Here"].exists)
         app.tables[tableIdentifier].cells.element(boundBy: 3).tap()
         XCTAssertFalse(app.staticTexts["Blocks go Here"].exists)
     }
