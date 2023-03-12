@@ -20,8 +20,10 @@ class ViewController: UIViewController {
     internal let titleView = TitleView()
     internal var expandedNode = -1
     internal var nodeList = NodeList()
-    internal var dataSource: [Node] = []
-
+    internal var tableModel = [NodeCellController]() {
+        didSet { tableView.reloadData() }
+    }
+    
     override func loadView() {
         super.loadView()
         
@@ -47,14 +49,12 @@ class ViewController: UIViewController {
         view.addSubview(titleView)
         view.addSubview(tableView)
         
+        let loader = RemoteNodeLoader(client: API(session: URLSession(configuration: .ephemeral)))
         // Getting Node
-        nodeList.nodes.forEach { node in
-            dataSource.append(node)
-        }
 
         // Getting Nodes Statuses
         nodeList.fetchStatuses(completionHandler: {
-            self.tableView.reloadData()
+            self.tableModel.append(contentsOf: self.nodeList.nodes.map { NodeCellController(model: $0, loader: loader)})
         })
         
     }
@@ -72,7 +72,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource.count
+        return tableModel.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,15 +81,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: NodeTableViewCell.identifier, for: indexPath) as! NodeTableViewCell
-            cell.configure(node: dataSource[indexPath.section] as Node, isExpanded: indexPath.section == expandedNode)
-            return cell
+            return cellController(forRowAt: indexPath).view(tableView: tableView, indexPath: indexPath, expandedNode: expandedNode)
         }
         
         let cell = UITableViewCell()
         cell.backgroundColor = UIColor.background()
         return cell
         
+    }
+    
+    private func cellController(forRowAt indexPath: IndexPath) -> NodeCellController {
+        tableModel[indexPath.section]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -99,3 +101,65 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+final class NodeCellController {
+    private let model: Node
+    private let loader: RemoteNodeLoader
+    
+    init(model: Node, loader: RemoteNodeLoader) {
+        self.model = model
+        self.loader = loader
+        loadBlocks()
+    }
+    
+    func view(tableView: UITableView, indexPath: IndexPath, expandedNode: Int) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: NodeTableViewCell.identifier,
+            for: indexPath) as? NodeTableViewCell
+        else {
+            fatalError("Error fetching dequeued reusable cell!")
+        }
+        
+        cell.configure(node: model, isExpanded: indexPath.section == expandedNode)
+        return cell
+    }
+    
+    func loadBlocks() {
+        guard let url = URL(string: model.url), model.online else {
+            return
+        }
+        
+        loader.loadNodeBlock(from: url) { result in
+            switch result {
+            case let .success(blocks):
+                self.model.blocks = blocks
+            case .failure:
+                return
+            }
+        }
+    }
+}
+
+class API: HTTPClient {
+    
+    private let session: URLSession
+    private struct UnexpectedValuesRepresentation: Error {}
+    
+    init(session: URLSession) {
+        self.session = session
+    }
+    
+    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
+        let task = session.dataTask(with: url) { data, _ , error in
+            completion(Result {
+                if let error = error {
+                    throw error
+                } else if let data = data {
+                    return data
+                } else {
+                    throw UnexpectedValuesRepresentation()
+                }
+            })
+        }
+        task.resume()
+    }
+}

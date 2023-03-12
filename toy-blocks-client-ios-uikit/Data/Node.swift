@@ -14,6 +14,7 @@ class Node: Identifiable, ObservableObject {
     @Published public var name: String
     @Published public var online: Bool
     @Published public var url: String
+    var blocks: [NodeBlock] = [NodeBlock]()
     
     init(_ name: String, _ url: String) {
         self.loading = true
@@ -21,4 +22,9 @@ class Node: Identifiable, ObservableObject {
         self.online = false
         self.url = url
     }
+}
+
+public struct NodeBlock: Equatable {
+    let index: Int
+    let content: String
 }

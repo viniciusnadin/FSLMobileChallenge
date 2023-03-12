@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5475526D29BD339800F8E173 /* RemoteNodeLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475526C29BD339800F8E173 /* RemoteNodeLoaderTests.swift */; };
+		5475526F29BD764500F8E173 /* RemoteNodeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475526E29BD764500F8E173 /* RemoteNodeLoader.swift */; };
 		AFC642372863573000C6D20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC642362863573000C6D20A /* AppDelegate.swift */; };
 		AFC642392863573000C6D20A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC642382863573000C6D20A /* SceneDelegate.swift */; };
 		AFC6423B2863573000C6D20A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC6423A2863573000C6D20A /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		5475526C29BD339800F8E173 /* RemoteNodeLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeLoaderTests.swift; sourceTree = "<group>"; };
+		5475526E29BD764500F8E173 /* RemoteNodeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeLoader.swift; sourceTree = "<group>"; };
 		AFC642332863573000C6D20A /* toy-blocks-client-ios-uikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "toy-blocks-client-ios-uikit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC642362863573000C6D20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC642382863573000C6D20A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				AFC6423F2863573200C6D20A /* Assets.xcassets */,
 				AFC642412863573200C6D20A /* LaunchScreen.storyboard */,
 				AFC642442863573200C6D20A /* Info.plist */,
+				5475526E29BD764500F8E173 /* RemoteNodeLoader.swift */,
 			);
 			path = "toy-blocks-client-ios-uikit";
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				AFC6423B2863573000C6D20A /* ViewController.swift in Sources */,
 				AFC642782864F6AF00C6D20A /* Colors.swift in Sources */,
 				AFC6427A2864F9D600C6D20A /* TitleView.swift in Sources */,
+				5475526F29BD764500F8E173 /* RemoteNodeLoader.swift in Sources */,
 				AFC6426D2863734100C6D20A /* Node.swift in Sources */,
 				AFC642372863573000C6D20A /* AppDelegate.swift in Sources */,
 				AFC642902865E82C00C6D20A /* URLSessionProtocol.swift in Sources */,
